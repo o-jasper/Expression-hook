@@ -1,0 +1,544 @@
+<html><head><link rel="stylesheet" type="text/css" href=".css"/>
+  </head>
+  <body><p><b>I do not expect this autodoc to fully work yet!
+      </b>
+      
+    </p>
+    <p><a id="item_name"">package
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defpackage_expression-hook" id="package_title"">expression-hook
+      </a>
+      <p id="item_body"">Macroexpands code purely by itself. *expression-hook* continues it,
+ and must call further expand-hook.
+Use the scanner with the EXPAND function with some hook used.
+
+Used for gathering information on code autodoc via expression-scan.
+      </p>
+      <p id="item_body""><a id="item_name"">exports 
+        </a>
+        <a href="nil">*base-macros*
+        </a>
+        , <a href="nil">*discontinue*
+        </a>
+        , <a href="nil">*eh-funs*
+        </a>
+        , <a href="nil">*eh-macs*
+        </a>
+        , <a href="nil">*eh-sym-macs*
+        </a>
+        , <a href="nil">*eh-vars*
+        </a>
+        , <a href="nil">*expression-hook*
+        </a>
+        , <a href="nil">*ignore-packages*
+        </a>
+        , <a href="nil">*in-funs*
+        </a>
+        , <a href="nil">a
+        </a>
+        , <a href="nil">arg
+        </a>
+        , <a href="nil">args
+        </a>
+        , <a href="nil">args-block
+        </a>
+        , <a href="nil">as-macrohook
+        </a>
+        , <a href="nil">base-fun
+        </a>
+        , <a href="nil">base-let
+        </a>
+        , <a href="nil">base-macro
+        </a>
+        , <a href="nil">base-macro-block
+        </a>
+        , <a href="nil">base-macro-catch
+        </a>
+        , <a href="nil">base-macro-declare
+        </a>
+        , <a href="nil">base-macro-defclass
+        </a>
+        , <a href="nil">base-macro-defmacro
+        </a>
+        , <a href="nil">base-macro-defmethod
+        </a>
+        , <a href="nil">base-macro-defpackage
+        </a>
+        , <a href="nil">base-macro-defparameter
+        </a>
+        , <a href="nil">base-macro-defstruct
+        </a>
+        , <a href="nil">base-macro-defun
+        </a>
+        , <a href="nil">base-macro-defvar
+        </a>
+        , <a href="nil">base-macro-eval-when
+        </a>
+        , <a href="nil">base-macro-flet
+        </a>
+        , <a href="nil">base-macro-function
+        </a>
+        , <a href="nil">base-macro-go
+        </a>
+        , <a href="nil">base-macro-labels
+        </a>
+        , <a href="nil">base-macro-lambda
+        </a>
+        , <a href="nil">base-macro-let
+        </a>
+        , <a href="nil">base-macro-let*
+        </a>
+        , <a href="nil">base-macro-load-time-value
+        </a>
+        , <a href="nil">base-macro-macrolet
+        </a>
+        , <a href="nil">base-macro-multiple-value-bind
+        </a>
+        , <a href="nil">base-macro-progn
+        </a>
+        , <a href="nil">base-macro-progv
+        </a>
+        , <a href="nil">base-macro-psetf
+        </a>
+        , <a href="nil">base-macro-psetq
+        </a>
+        , <a href="nil">base-macro-quote
+        </a>
+        , <a href="nil">base-macro-return-from
+        </a>
+        , <a href="nil">base-macro-rotatef
+        </a>
+        , <a href="nil">base-macro-setq
+        </a>
+        , <a href="nil">base-macro-symbol-macrolet
+        </a>
+        , <a href="nil">base-macro-tagbody
+        </a>
+        , <a href="nil">base-macro-the
+        </a>
+        , <a href="nil">base-macro-unwind-protect
+        </a>
+        , <a href="nil">bfn
+        </a>
+        , <a href="nil">bind
+        </a>
+        , <a href="nil">binds
+        </a>
+        , <a href="nil">body
+        </a>
+        , <a href="nil">cleanup
+        </a>
+        , <a href="nil">cn
+        </a>
+        , <a href="nil">col-arg
+        </a>
+        , <a href="nil">col-bind
+        </a>
+        , <a href="nil">col-key
+        </a>
+        , <a href="nil">col-names
+        </a>
+        , <a href="nil">col-opt
+        </a>
+        , <a href="nil">col-rest
+        </a>
+        , <a href="nil">col-result
+        </a>
+        , <a href="nil">col-var
+        </a>
+        , <a href="nil">components
+        </a>
+        , <a href="nil">cr
+        </a>
+        , <a href="nil">def-base-macro
+        </a>
+        , <a href="nil">derive-from
+        </a>
+        , <a href="nil">doc
+        </a>
+        , <a href="nil">e-list
+        </a>
+        , <a href="nil">el
+        </a>
+        , <a href="nil">env
+        </a>
+        , <a href="nil">expand
+        </a>
+        , <a href="nil">expand-file
+        </a>
+        , <a href="nil">expand-funs
+        </a>
+        , <a href="nil">expand-hook
+        </a>
+        , <a href="nil">expander
+        </a>
+        , <a href="nil">expr
+        </a>
+        , <a href="nil">expr-hook
+        </a>
+        , <a href="nil">expression-hook-to-macro-hook
+        </a>
+        , <a href="nil">flat-arg
+        </a>
+        , <a href="nil">fn
+        </a>
+        , <a href="nil">form
+        </a>
+        , <a href="nil">from
+        </a>
+        , <a href="nil">fun
+        </a>
+        , <a href="nil">function-name-p
+        </a>
+        , <a href="nil">funs
+        </a>
+        , <a href="nil">init
+        </a>
+        , <a href="nil">k
+        </a>
+        , <a href="nil">key
+        </a>
+        , <a href="nil">LAMBDA
+        </a>
+        , <a href="nil">load-first
+        </a>
+        , <a href="nil">m
+        </a>
+        , <a href="nil">macro-hook
+        </a>
+        , <a href="nil">macro-hook-to-expression-hook
+        </a>
+        , <a href="nil">macs
+        </a>
+        , <a href="nil">mfn
+        </a>
+        , <a href="nil">mvb
+        </a>
+        , <a href="nil">n
+        </a>
+        , <a href="nil">name
+        </a>
+        , <a href="nil">names
+        </a>
+        , <a href="nil">object
+        </a>
+        , <a href="nil">opt
+        </a>
+        , <a href="nil">p
+        </a>
+        , <a href="nil">pairs
+        </a>
+        , <a href="nil">protected-form
+        </a>
+        , <a href="nil">read-only-p
+        </a>
+        , <a href="nil">res
+        </a>
+        , <a href="nil">situation
+        </a>
+        , <a href="nil">slots
+        </a>
+        , <a href="nil">sm
+        </a>
+        , <a href="nil">state
+        </a>
+        , <a href="nil">stuff
+        </a>
+        , <a href="nil">symbols
+        </a>
+        , <a href="nil">tag
+        </a>
+        , <a href="nil">to
+        </a>
+        , <a href="nil">v
+        </a>
+        , <a href="nil">val
+        </a>
+        , <a href="nil">value
+        </a>
+        , <a href="nil">value-type
+        </a>
+        , <a href="nil">var
+        </a>
+        , <a href="nil">vars
+        </a>
+        , <a href="nil">way
+        </a>
+        
+      </p>
+      <p id="item_body""><a id="minor_item_name"">found in file: 
+        </a>
+        <a href="/home/jasper/lisp-proj/expression-hook/src/expression-hook.lisp">/home/jasper/lisp-proj/expression-hook/src/expression-hook.lisp
+        </a>
+        
+      </p>
+      
+    </p>
+    <p><a id="item_name"">variable
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defvar_*eh-sym-macs*" id="var_title"">*eh-sym-macs*
+      </a>
+      <p id="item_body"">List of symbol-macros.
+      </p>
+      
+    </p>
+    <p><a id="item_name"">variable
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defvar_*eh-vars*" id="var_title"">*eh-vars*
+      </a>
+      <p id="item_body"">List of variables that are from local let, let*.
+      </p>
+      
+    </p>
+    <p><a id="item_name"">variable
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defvar_*eh-macs*" id="var_title"">*eh-macs*
+      </a>
+      <p id="item_body"">List of functions that are from local macrolet.
+      </p>
+      
+    </p>
+    <p><a id="item_name"">variable
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defvar_*eh-funs*" id="var_title"">*eh-funs*
+      </a>
+      <p id="item_body"">List of functions that are from local flet, labels.
+      </p>
+      
+    </p>
+    <p><a id="item_name"">variable
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defvar_*in-funs*" id="var_title"">*in-funs*
+      </a>
+      <p id="item_body"">Current functions. (Can be in multiple; like a defun and then a flet.
+      </p>
+      
+    </p>
+    <p><a id="item_name"">parameter
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defparameter_*expression-hook*" id="var_title"">*expression-hook*
+      </a>
+      <p id="item_body"">Hook that sees every s-expression.
+Change it to scan and such. Note that it has to be able to
+ read any expression it comes across. Return the result of
+ EXPAND-HOOK at the end.
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_expand-file" id="fun_title"">expand-file
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(from &key load-first)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Convenience function to scan files with. Takes as arguments:
+files or streams, or lists of these.
+      </p>
+      <p id="item_body""><a id="item_name"">uses variables: 
+        </a>
+        <a href="nil" id="package_name"">expression-hook
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defvar_*discontinue*" id="var_name"">*discontinue*
+        </a>
+        </br>
+      </p>
+      <p id="item_body""><a id="item_name"">uses functions: 
+        </a>
+        <a href="nil" id="package_name"">alexandria.0.dev
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">rcurry
+        </a>
+        </br><a href="nil" id="package_name"">expression-hook
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defun_expand" id="fun_name"">expand
+        </a>
+        , <a href="defun_expand-file" id="fun_name"">expand-file
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_expand-hook" id="fun_title"">expand-hook
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(form &key as-macrohook)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">The hook version of expand; expand works, only expanding, with this
+ expression hook. You have to call this with your expression hook and use
+ lexical binds to pass information down.
+      </p>
+      <p id="item_body""><a id="item_name"">uses variables: 
+        </a>
+        <a href="nil" id="package_name"">expression-hook
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defvar_*base-macros*" id="var_name"">*base-macros*
+        </a>
+        , <a href="defvar_*discontinue*" id="var_name"">*discontinue*
+        </a>
+        , <a href="defvar_*eh-funs*" id="var_name"">*eh-funs*
+        </a>
+        , <a href="defvar_*eh-macs*" id="var_name"">*eh-macs*
+        </a>
+        , <a href="defvar_*eh-sym-macs*" id="var_name"">*eh-sym-macs*
+        </a>
+        , <a href="defparameter_*ignore-packages*" id="var_name"">*ignore-packages*
+        </a>
+        </br>
+      </p>
+      <p id="item_body""><a id="item_name"">uses functions: 
+        </a>
+        <a href="nil" id="package_name"">alexandria.0.dev
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">if-let
+        </a>
+        , <a href="nil">with-gensyms
+        </a>
+        </br><a href="nil" id="package_name"">denest
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">denest
+        </a>
+        </br><a href="nil" id="package_name"">expression-hook
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defun_e-list" id="fun_name"">e-list
+        </a>
+        , <a href="defun_expand" id="fun_name"">expand
+        </a>
+        , <a href="defun_expand-hook" id="fun_name"">expand-hook
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_expand" id="fun_title"">expand
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(form)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Macroexpands form according to the macros and the 'base macros'
+ (which are intended to 'replace' special operators.)
+      </p>
+      <p id="item_body""><a id="item_name"">uses variables: 
+        </a>
+        <a href="nil" id="package_name"">expression-hook
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defparameter_*expression-hook*" id="var_name"">*expression-hook*
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    <p><a id="item_name"">macro
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defmacro_def-base-macro" id="fun_title"">def-base-macro
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(name (&rest args) &body body)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Adds a base macro. These are macros that are not expanded by the
+ expander, but they do define how to scan on from these macros.
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_macro-hook-to-expression-hook" id="fun_title"">macro-hook-to-expression-hook
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(macro-hook)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Conversion from macro hook to expression hook.(No  env though)
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_expression-hook-to-macro-hook" id="fun_title"">expression-hook-to-macro-hook
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(expr-hook)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">(Trivial)conversion from expression hook to macro hook.
+      </p>
+      
+    </p>
+    
+  </body>
+  
+</html>

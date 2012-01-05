@@ -1,0 +1,511 @@
+<html><head><link rel="stylesheet" type="text/css" href=".css"/>
+  </head>
+  <body><p><b>I do not expect this autodoc to fully work yet!
+      </b>
+      
+    </p>
+    <p><a id="item_name"">package
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defpackage_gil-autodoc" id="package_title"">gil-autodoc
+      </a>
+      <p id="item_body"">Autodocumentation of expression-scan results using gil-mac.
+TODO 
+* some lists need to be better('description list')
+* function, macro, variable, class plain lists at start.
+* use indentation for better readability.
+* use `section`
+* formalization examples, todos, notes, references
+      </p>
+      <p id="item_body""><a id="item_name"">exports 
+        </a>
+        <a href="nil">*args*
+        </a>
+        , <a href="nil">*dep-fun*
+        </a>
+        , <a href="nil">*dep-mention*
+        </a>
+        , <a href="nil">*dep-var*
+        </a>
+        , <a href="nil">*derives-from*
+        </a>
+        , <a href="nil">*exports*
+        </a>
+        , <a href="nil">*extra-args*
+        </a>
+        , <a href="nil">*from-dir*
+        </a>
+        , <a href="nil">*in-funs*
+        </a>
+        , <a href="nil">*on-docstrings*
+        </a>
+        , <a href="nil">*path*
+        </a>
+        , <a href="nil">*paths*
+        </a>
+        , <a href="nil">*slot-way*
+        </a>
+        , <a href="nil">a
+        </a>
+        , <a href="nil">after-package
+        </a>
+        , <a href="nil">b
+        </a>
+        , <a href="nil">between
+        </a>
+        , <a href="nil">between-package
+        </a>
+        , <a href="nil">body
+        </a>
+        , <a href="nil">boring
+        </a>
+        , <a href="nil">dep
+        </a>
+        , <a href="nil">dep-fun-list
+        </a>
+        , <a href="nil">dep-var-list
+        </a>
+        , <a href="nil">derives
+        </a>
+        , <a href="nil">derives-from
+        </a>
+        , <a href="nil">derives-list
+        </a>
+        , <a href="nil">doc
+        </a>
+        , <a href="nil">doc-args
+        </a>
+        , <a href="nil">doc-body
+        </a>
+        , <a href="nil">doc-created-in
+        </a>
+        , <a href="nil">doc-dep
+        </a>
+        , <a href="nil">doc-extra-args
+        </a>
+        , <a href="nil">doc-nr
+        </a>
+        , <a href="nil">doc-path
+        </a>
+        , <a href="nil">doc-whole-package
+        </a>
+        , <a href="nil">el
+        </a>
+        , <a href="nil">export-list
+        </a>
+        , <a href="nil">exported
+        </a>
+        , <a href="nil">exports
+        </a>
+        , <a href="nil">external-p
+        </a>
+        , <a href="nil">extra
+        </a>
+        , <a href="nil">extra-arg
+        </a>
+        , <a href="nil">extra-args-doc
+        </a>
+        , <a href="nil">first-p
+        </a>
+        , <a href="nil">from
+        </a>
+        , <a href="nil">fun
+        </a>
+        , <a href="nil">fun-name
+        </a>
+        , <a href="nil">generic
+        </a>
+        , <a href="nil">gil-autodoc
+        </a>
+        , <a href="nil">handle-extra-arg
+        </a>
+        , <a href="nil">have
+        </a>
+        , <a href="nil">in-funs-val
+        </a>
+        , <a href="nil">item-name
+        </a>
+        , <a href="nil">link
+        </a>
+        , <a href="nil">list-by-package
+        </a>
+        , <a href="nil">mention
+        </a>
+        , <a href="nil">mention-fun
+        </a>
+        , <a href="nil">mention-package
+        </a>
+        , <a href="nil">mention-sym
+        </a>
+        , <a href="nil">mention-var
+        </a>
+        , <a href="nil">obj
+        </a>
+        , <a href="nil">one
+        </a>
+        , <a href="nil">opts
+        </a>
+        , <a href="nil">order
+        </a>
+        , <a href="nil">p
+        </a>
+        , <a href="nil">p-name
+        </a>
+        , <a href="nil">pa
+        </a>
+        , <a href="nil">package-name-sym
+        </a>
+        , <a href="nil">path
+        </a>
+        , <a href="nil">path-per-obj
+        </a>
+        , <a href="nil">path-str
+        </a>
+        , <a href="nil">paths
+        </a>
+        , <a href="nil">paths-list
+        </a>
+        , <a href="nil">pb
+        </a>
+        , <a href="nil">per-package
+        </a>
+        , <a href="nil">pp
+        </a>
+        , <a href="nil">remove-boring
+        </a>
+        , <a href="nil">remove-other-types
+        </a>
+        , <a href="nil">s
+        </a>
+        , <a href="nil">scan-list
+        </a>
+        , <a href="nil">slot
+        </a>
+        , <a href="nil">slot-way
+        </a>
+        , <a href="nil">sort-by-package
+        </a>
+        , <a href="nil">sorted
+        </a>
+        , <a href="nil">sorter
+        </a>
+        , <a href="nil">state
+        </a>
+        , <a href="nil">stuff
+        </a>
+        , <a href="nil">sym
+        </a>
+        , <a href="nil">symbol-list
+        </a>
+        , <a href="nil">tell-about
+        </a>
+        , <a href="nil">test
+        </a>
+        , <a href="nil">thing
+        </a>
+        , <a href="nil">title
+        </a>
+        , <a href="nil">title-track
+        </a>
+        , <a href="nil">track
+        </a>
+        , <a href="nil">used-class
+        </a>
+        , <a href="nil">var
+        </a>
+        , <a href="nil">var-name
+        </a>
+        , <a href="nil">which-title
+        </a>
+        
+      </p>
+      <p id="item_body""><a id="minor_item_name"">found in file: 
+        </a>
+        <a href="/home/jasper/lisp-proj/expression-hook/src/gil-autodoc.lisp">/home/jasper/lisp-proj/expression-hook/src/gil-autodoc.lisp
+        </a>
+        
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_gil-autodoc" id="fun_title"">gil-autodoc
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(package &key (from ltk) opts order (state exported))
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Documents a package, creating a window/file for you.
+      </p>
+      <p id="item_body""><a id="item_name"">uses functions: 
+        </a>
+        <a href="nil" id="package_name"">expression-scan
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defun_access-result" id="fun_name"">access-result
+        </a>
+        </br><a href="nil" id="package_name"">gil-autodoc
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defun_doc-whole-package" id="fun_name"">doc-whole-package
+        </a>
+        </br><a href="nil" id="package_name"">gil-def
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">window-under
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_doc-whole-package" id="fun_title"">doc-whole-package
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(package &key (path-per-obj (> (length (track-item package paths)) 1)) order (state
+                                                                              exported))
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body""><a id="item_name"">uses variables: 
+        </a>
+        <a href="nil" id="package_name"">gil-autodoc
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defparameter_*path*" id="var_name"">*path*
+        </a>
+        </br>
+      </p>
+      <p id="item_body""><a id="item_name"">uses functions: 
+        </a>
+        <a href="nil" id="package_name"">alexandria.0.dev
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">compose
+        </a>
+        , <a href="nil">when-let
+        </a>
+        </br><a href="nil" id="package_name"">expression-scan
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defun_access-result" id="fun_name"">access-result
+        </a>
+        , <a href="defun_track-extra" id="fun_name"">track-extra
+        </a>
+        , <a href="defgeneric_track-item">track-item
+        </a>
+        </br><a href="nil" id="package_name"">gil-autodoc
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defgeneric_doc">doc
+        </a>
+        , <a href="defun_p" id="fun_name"">p
+        </a>
+        , <a href="defun_remove-other-types" id="fun_name"">remove-other-types
+        </a>
+        </br><a href="nil" id="package_name"">gil-def
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">handle
+        </a>
+        , <a href="nil">handle__
+        </a>
+        , <a href="nil">paragraph
+        </a>
+        , <a href="nil">paragraph__
+        </a>
+        , <a href="nil">style
+        </a>
+        , <a href="nil">style__
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    <p><a id="item_name"">generic function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defgeneric_doc" id="fun_title"">doc
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(track &key &allow-other-keys)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Documents some tracker.
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_list-by-package" id="fun_title"">list-by-package
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(list &key sorted)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Make a list of lists, each list containing symbols of the same package.
+      </p>
+      <p id="item_body""><a id="item_name"">uses functions: 
+        </a>
+        <a href="nil" id="package_name"">alexandria.0.dev
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">if-let
+        </a>
+        </br><a href="nil" id="package_name"">gil-autodoc
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defun_list-by-package" id="fun_name"">list-by-package
+        </a>
+        , <a href="defun_package-name-sym" id="fun_name"">package-name-sym
+        </a>
+        , <a href="defun_sort-by-package" id="fun_name"">sort-by-package
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_sort-by-package" id="fun_title"">sort-by-package
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(list)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body""><a id="item_name"">uses functions: 
+        </a>
+        <a href="nil" id="package_name"">gil-autodoc
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">p-name
+        </a>
+        , <a href="defun_package-name-sym" id="fun_name"">package-name-sym
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_mention" id="fun_title"">mention
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(thing &rest body)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Mention a scanned thing, linking to it.
+      </p>
+      <p id="item_body""><a id="item_name"">uses functions: 
+        </a>
+        <a href="nil" id="package_name"">gil-autodoc
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defgeneric_link">link
+        </a>
+        , <a href="defgeneric_tell-about">tell-about
+        </a>
+        </br><a href="nil" id="package_name"">gil-def
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">refer
+        </a>
+        , <a href="nil">refer__
+        </a>
+        , <a href="nil">style
+        </a>
+        , <a href="nil">style__
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    <p><a id="item_name"">generic function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defgeneric_tell-about" id="fun_title"">tell-about
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(thing)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Mention something(not linking)
+      </p>
+      
+    </p>
+    <p><a id="item_name"">generic function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defgeneric_link" id="fun_title"">link
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(thing)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Return gil link name to the thing.
+      </p>
+      
+    </p>
+    
+  </body>
+  
+</html>

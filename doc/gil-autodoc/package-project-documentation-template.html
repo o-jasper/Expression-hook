@@ -1,0 +1,88 @@
+<html><head><link rel="stylesheet" type="text/css" href=".css"/>
+  </head>
+  <body><p><b>I do not expect this autodoc to fully work yet!
+      </b>
+      
+    </p>
+    <p><a id="item_name"">package
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defpackage_package-project-documentation-template" id="package_title"">package-project-documentation-template
+      </a>
+      <p id="item_body"">Provides a function that can be used in the `also` keyword
+ argument of `package-project:auto-update` to add documentation-template output. 
+
+NOTE: that package (at least the version i am looking at) really is meant as
+ _template_, it leaves stuff to fill in, and comments that are not applicable to
+ your project! For instance the -for-you-invalid- link to download! Do not edit
+ the output itself, because running this `also` again will overwrite it.
+      </p>
+      <p id="item_body""><a id="item_name"">exports 
+        </a>
+        <a href="nil">also
+        </a>
+        , <a href="nil">dir
+        </a>
+        , <a href="nil">extra
+        </a>
+        , <a href="nil">if-does-not-exist
+        </a>
+        , <a href="nil">if-exists
+        </a>
+        , <a href="nil">maybe-skip-methods-p
+        </a>
+        , <a href="nil">project-dir
+        </a>
+        , <a href="nil">subtitle
+        </a>
+        , <a href="nil">target
+        </a>
+        
+      </p>
+      <p id="item_body""><a id="minor_item_name"">found in file: 
+        </a>
+        <a href="/home/jasper/lisp-proj/expression-hook/src/package-project-documentation-template.lisp">/home/jasper/lisp-proj/expression-hook/src/package-project-documentation-template.lisp
+        </a>
+        
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_also" id="fun_title"">also
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(&key (dir DOC/DOCUMENTATION-TEMPLATE/) maybe-skip-methods-p (subtitle
+                                                              aUTOMATICALLY GENERATED) (if-exists
+                                                                                        supersede) (if-does-not-exist
+                                                                                                    create))
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Makes the function for the `:also` argument of `package-project:auto-update`.
+`dir` is relative directory(default 'doc/documentation-template/'. 
+Other arguments are fed through to the `create-template`.(Except target)
+NOTE see defpackage documentation.
+      </p>
+      <p id="item_body""><a id="item_name"">uses functions: 
+        </a>
+        <a href="nil" id="package_name"">documentation-template
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">create-template
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    
+  </body>
+  
+</html>

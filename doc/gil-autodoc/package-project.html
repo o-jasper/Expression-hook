@@ -1,0 +1,208 @@
+<html><head><link rel="stylesheet" type="text/css" href=".css"/>
+  </head>
+  <body><p><b>I do not expect this autodoc to fully work yet!
+      </b>
+      
+    </p>
+    <p><a id="item_name"">package
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defpackage_package-project" id="package_title"">package-project
+      </a>
+      <p id="item_body"">Packages a project in a simple way.
+      </p>
+      <p id="item_body""><a id="item_name"">exports 
+        </a>
+        <a href="nil">*package-info*
+        </a>
+        , <a href="nil">*src-dir*
+        </a>
+        , <a href="nil">also
+        </a>
+        , <a href="nil">also-uses
+        </a>
+        , <a href="nil">asd-license
+        </a>
+        , <a href="nil">auto-update
+        </a>
+        , <a href="nil">copy-files
+        </a>
+        , <a href="nil">el
+        </a>
+        , <a href="nil">extra
+        </a>
+        , <a href="nil">f
+        </a>
+        , <a href="nil">file
+        </a>
+        , <a href="nil">filename
+        </a>
+        , <a href="nil">fn
+        </a>
+        , <a href="nil">form
+        </a>
+        , <a href="nil">from-file
+        </a>
+        , <a href="nil">have
+        </a>
+        , <a href="nil">header
+        </a>
+        , <a href="nil">implementation-package-p
+        </a>
+        , <a href="nil">in
+        </a>
+        , <a href="nil">info
+        </a>
+        , <a href="nil">info-dir
+        </a>
+        , <a href="nil">license
+        </a>
+        , <a href="nil">line
+        </a>
+        , <a href="nil">module
+        </a>
+        , <a href="nil">out
+        </a>
+        , <a href="nil">p
+        </a>
+        , <a href="nil">package-info
+        </a>
+        , <a href="nil">paths
+        </a>
+        , <a href="nil">pkg
+        </a>
+        , <a href="nil">pkg-name
+        </a>
+        , <a href="nil">prepend-file
+        </a>
+        , <a href="nil">project-dir
+        </a>
+        , <a href="nil">read-empty
+        </a>
+        , <a href="nil">result
+        </a>
+        , <a href="nil">s
+        </a>
+        , <a href="nil">seen-packages
+        </a>
+        , <a href="nil">src-dir
+        </a>
+        , <a href="nil">subdirs
+        </a>
+        , <a href="nil">sys-name
+        </a>
+        , <a href="nil">to
+        </a>
+        , <a href="nil">update-header
+        </a>
+        , <a href="nil">uses
+        </a>
+        , <a href="nil">what
+        </a>
+        , <a href="nil">write-system
+        </a>
+        
+      </p>
+      <p id="item_body""><a id="minor_item_name"">found in file: 
+        </a>
+        <a href="/home/jasper/lisp-proj/expression-hook/src/package-project.lisp">/home/jasper/lisp-proj/expression-hook/src/package-project.lisp
+        </a>
+        
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_auto-update" id="fun_title"">auto-update
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(filename &key (subdirs '(DOC TEST TRY EXAMPLE GUI)) also)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">If application under `src/` directory, assume it is a project directory, and
+ update it. `also` allows you to add stuff like autodocumentation. 
+package-project-documentation-template autodocs using documentation-template.
+
+TODO handle absolute directories
+      </p>
+      <p id="item_body""><a id="item_name"">uses functions: 
+        </a>
+        <a href="nil" id="package_name"">alexandria.0.dev
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">copy-file
+        </a>
+        , <a href="nil">if-let
+        </a>
+        , <a href="nil">rcurry
+        </a>
+        </br><a href="nil" id="package_name"">expression-scan
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defun_access-result" id="fun_name"">access-result
+        </a>
+        , <a href="defun_scan" id="fun_name"">scan
+        </a>
+        , <a href="defun_scan-expression-hook" id="fun_name"">scan-expression-hook
+        </a>
+        </br><a href="nil" id="package_name"">j-string-utils
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">concat
+        </a>
+        , <a href="nil">tokenize-str
+        </a>
+        </br><a href="nil" id="package_name"">package-project
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defun_read-empty" id="fun_name"">read-empty
+        </a>
+        , <a href="defun_update-header" id="fun_name"">update-header
+        </a>
+        , <a href="defun_write-system" id="fun_name"">write-system
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_package-info" id="fun_title"">package-info
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(package &optional what)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body""><a id="item_name"">uses variables: 
+        </a>
+        <a href="nil" id="package_name"">package-project
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defvar_*package-info*" id="var_name"">*package-info*
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    
+  </body>
+  
+</html>

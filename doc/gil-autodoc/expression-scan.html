@@ -1,0 +1,778 @@
+<html><head><link rel="stylesheet" type="text/css" href=".css"/>
+  </head>
+  <body><p><b>I do not expect this autodoc to fully work yet!
+      </b>
+      
+    </p>
+    <p><a id="item_name"">package
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defpackage_expression-scan" id="package_title"">expression-scan
+      </a>
+      <p id="item_body"">Can create and use expression-hook to obtain
+ information about code. Any s-expression can be tracked.
+ (So macros and functions can be tracked.)
+      </p>
+      <p id="item_body""><a id="item_name"">exports 
+        </a>
+        <a href="nil">*additional-scan*
+        </a>
+        , <a href="nil">*couldnt-find-package*
+        </a>
+        , <a href="nil">*cur-file*
+        </a>
+        , <a href="nil">*cur-package*
+        </a>
+        , <a href="nil">*cur-path*
+        </a>
+        , <a href="nil">*follow-asdf-systems*
+        </a>
+        , <a href="nil">*forms-for*
+        </a>
+        , <a href="nil">*fun-scan*
+        </a>
+        , <a href="nil">*ignore-packages*
+        </a>
+        , <a href="nil">*otherwise*
+        </a>
+        , <a href="nil">*overrider*
+        </a>
+        , <a href="nil">*package-list*
+        </a>
+        , <a href="nil">*reading-myself*
+        </a>
+        , <a href="nil">*scan-result*
+        </a>
+        , <a href="nil">*scanned-forms*
+        </a>
+        , <a href="nil">a
+        </a>
+        , <a href="nil">access-result
+        </a>
+        , <a href="nil">add-dep-to-tracker
+        </a>
+        , <a href="nil">add-scanner
+        </a>
+        , <a href="nil">add-scanner-fun
+        </a>
+        , <a href="nil">additional-scanner-fun
+        </a>
+        , <a href="nil">also-uses
+        </a>
+        , <a href="nil">args
+        </a>
+        , <a href="nil">args/dstr
+        </a>
+        , <a href="nil">base-track
+        </a>
+        , <a href="nil">body
+        </a>
+        , <a href="nil">check-symbol
+        </a>
+        , <a href="nil">check-top
+        </a>
+        , <a href="nil">component
+        </a>
+        , <a href="nil">components
+        </a>
+        , <a href="nil">cur-path
+        </a>
+        , <a href="nil">def-scanner
+        </a>
+        , <a href="nil">depend-track
+        </a>
+        , <a href="nil">depth
+        </a>
+        , <a href="nil">dstr
+        </a>
+        , <a href="nil">dstr/body
+        </a>
+        , <a href="nil">env
+        </a>
+        , <a href="nil">expander
+        </a>
+        , <a href="nil">expr
+        </a>
+        , <a href="nil">extra
+        </a>
+        , <a href="nil">extra-name
+        </a>
+        , <a href="nil">f
+        </a>
+        , <a href="nil">f-name
+        </a>
+        , <a href="nil">file
+        </a>
+        , <a href="nil">fn
+        </a>
+        , <a href="nil">for-name
+        </a>
+        , <a href="nil">form
+        </a>
+        , <a href="nil">form-names
+        </a>
+        , <a href="nil">form-scanner
+        </a>
+        , <a href="nil">from
+        </a>
+        , <a href="nil">from-package
+        </a>
+        , <a href="nil">fun
+        </a>
+        , <a href="nil">fun-dep
+        </a>
+        , <a href="nil">fun-like-scanner
+        </a>
+        , <a href="nil">fun-name
+        </a>
+        , <a href="nil">gen
+        </a>
+        , <a href="nil">hash
+        </a>
+        , <a href="nil">in-funs
+        </a>
+        , <a href="nil">info
+        </a>
+        , <a href="nil">item
+        </a>
+        , <a href="nil">item-name
+        </a>
+        , <a href="nil">judge
+        </a>
+        , <a href="nil">key
+        </a>
+        , <a href="nil">keywords
+        </a>
+        , <a href="nil">kind
+        </a>
+        , <a href="nil">list-packages-below-path
+        </a>
+        , <a href="nil">load-first
+        </a>
+        , <a href="nil">methods
+        </a>
+        , <a href="nil">name
+        </a>
+        , <a href="nil">obj
+        </a>
+        , <a href="nil">overrider
+        </a>
+        , <a href="nil">p
+        </a>
+        , <a href="nil">path
+        </a>
+        , <a href="nil">paths
+        </a>
+        , <a href="nil">pkg
+        </a>
+        , <a href="nil">pre-track
+        </a>
+        , <a href="nil">prev
+        </a>
+        , <a href="nil">result
+        </a>
+        , <a href="nil">scan
+        </a>
+        , <a href="nil">scan-asdf-components
+        </a>
+        , <a href="nil">scan-expr
+        </a>
+        , <a href="nil">scan-expression-hook
+        </a>
+        , <a href="nil">scan-file
+        </a>
+        , <a href="nil">scan-function
+        </a>
+        , <a href="nil">scan-list
+        </a>
+        , <a href="nil">scan-macro-hook
+        </a>
+        , <a href="nil">scan-macrohook
+        </a>
+        , <a href="nil">scan-stream
+        </a>
+        , <a href="nil">scanning-fun
+        </a>
+        , <a href="nil">sf
+        </a>
+        , <a href="nil">slot
+        </a>
+        , <a href="nil">slot-value-track-item
+        </a>
+        , <a href="nil">sym
+        </a>
+        , <a href="nil">sys
+        </a>
+        , <a href="nil">system-name
+        </a>
+        , <a href="nil">to
+        </a>
+        , <a href="nil">top
+        </a>
+        , <a href="nil">track
+        </a>
+        , <a href="nil">track-class
+        </a>
+        , <a href="nil">track-extra
+        </a>
+        , <a href="nil">track-form
+        </a>
+        , <a href="nil">track-fun
+        </a>
+        , <a href="nil">track-generic
+        </a>
+        , <a href="nil">track-item
+        </a>
+        , <a href="nil">track-method
+        </a>
+        , <a href="nil">track-package
+        </a>
+        , <a href="nil">track-system
+        </a>
+        , <a href="nil">track-var
+        </a>
+        , <a href="nil">tracker
+        </a>
+        , <a href="nil">typed-track
+        </a>
+        , <a href="nil">uses
+        </a>
+        , <a href="nil">value
+        </a>
+        , <a href="nil">var-dep
+        </a>
+        , <a href="nil">var-scanner
+        </a>
+        , <a href="nil">way
+        </a>
+        , <a href="nil">way/args
+        </a>
+        
+      </p>
+      <p id="item_body""><a id="minor_item_name"">found in file: 
+        </a>
+        <a href="/home/jasper/lisp-proj/expression-hook/src/expression-scan.lisp">/home/jasper/lisp-proj/expression-hook/src/expression-scan.lisp
+        </a>
+        
+      </p>
+      
+    </p>
+    <p><a id="item_name"">class
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defclass_track-system" id="class_title"">track-system
+      </a>
+      <p id="item_body""><a id="minor_item_name"">derived from 
+        </a>
+        <a href="defclass_track-form">track-form
+        </a>
+        
+      </p>
+      
+    </p>
+    <p><a id="item_name"">class
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defclass_track-class" id="class_title"">track-class
+      </a>
+      <p id="item_body""><a id="minor_item_name"">derived from 
+        </a>
+        <a href="defclass_track-form">track-form
+        </a>
+        
+      </p>
+      
+    </p>
+    <p><a id="item_name"">class
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defclass_track-var" id="class_title"">track-var
+      </a>
+      <p id="item_body""><a id="minor_item_name"">derived from 
+        </a>
+        <a href="defclass_track-form">track-form
+        </a>
+        , <a href="defclass_typed-track">typed-track
+        </a>
+        
+      </p>
+      
+    </p>
+    <p><a id="item_name"">class
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defclass_track-method" id="class_title"">track-method
+      </a>
+      <p id="item_body""><a id="minor_item_name"">derived from 
+        </a>
+        <a href="defclass_track-fun">track-fun
+        </a>
+        
+      </p>
+      
+    </p>
+    <p><a id="item_name"">class
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defclass_track-generic" id="class_title"">track-generic
+      </a>
+      <p id="item_body""><a id="minor_item_name"">derived from 
+        </a>
+        <a href="defclass_track-form">track-form
+        </a>
+        , <a href="defclass_typed-track">typed-track
+        </a>
+        , <a href="defclass_depend-track">depend-track
+        </a>
+        
+      </p>
+      
+    </p>
+    <p><a id="item_name"">class
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defclass_track-fun" id="class_title"">track-fun
+      </a>
+      <p id="item_body""><a id="minor_item_name"">derived from 
+        </a>
+        <a href="defclass_base-track">base-track
+        </a>
+        , <a href="defclass_depend-track">depend-track
+        </a>
+        
+      </p>
+      
+    </p>
+    <p><a id="item_name"">class
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defclass_track-package" id="class_title"">track-package
+      </a>
+      <p id="item_body""><a id="minor_item_name"">derived from 
+        </a>
+        <a href="defclass_track-form">track-form
+        </a>
+        
+      </p>
+      
+    </p>
+    <p><a id="item_name"">class
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defclass_depend-track" id="class_title"">depend-track
+      </a>
+      
+    </p>
+    <p><a id="item_name"">class
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defclass_typed-track" id="class_title"">typed-track
+      </a>
+      
+    </p>
+    <p><a id="item_name"">class
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defclass_track-form" id="class_title"">track-form
+      </a>
+      <p id="item_body""><a id="minor_item_name"">derived from 
+        </a>
+        <a href="defclass_base-track">base-track
+        </a>
+        
+      </p>
+      
+    </p>
+    <p><a id="item_name"">class
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defclass_base-track" id="class_title"">base-track
+      </a>
+      <p id="item_body""><a id="minor_item_name"">derived from 
+        </a>
+        <a href="defclass_pre-track">pre-track
+        </a>
+        
+      </p>
+      
+    </p>
+    <p><a id="item_name"">variable
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defvar_*package-list*" id="var_title"">*package-list*
+      </a>
+      <p id="item_body"">List of all found packages.
+      </p>
+      
+    </p>
+    <p><a id="item_name"">variable
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defvar_*scan-result*" id="var_title"">*scan-result*
+      </a>
+      <p id="item_body"">Hash table, first by-function/macro name, then 'instance' name.
+      </p>
+      
+    </p>
+    <p><a id="item_name"">parameter
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defparameter_*additional-scan*" id="var_title"">*additional-scan*
+      </a>
+      <p id="item_body"">List of functions for scanning besides every expression.
+ (Rather then fun-scan, elements of which only scan specific macros.
+      </p>
+      
+    </p>
+    <p><a id="item_name"">variable
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defvar_*otherwise*" id="var_title"">*otherwise*
+      </a>
+      <p id="item_body"">What to do if no scanner matches
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_track-form" id="fun_title"">track-form
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(&rest form-names)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Tracks the form, for `*otherwise*` or
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_track-extra" id="fun_title"">track-extra
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(track extra-name)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Get/set extra info of a tracked macro.
+      </p>
+      
+    </p>
+    <p><a id="item_name"">generic function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defgeneric_track-item" id="fun_title"">track-item
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(track item-name)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Get info out of a tracked macro.
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_scan-expr" id="fun_title"">scan-expr
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(expr)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Scans a single expression.
+      </p>
+      <p id="item_body""><a id="item_name"">uses functions: 
+        </a>
+        <a href="nil" id="package_name"">expression-hook
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defun_expand" id="fun_name"">expand
+        </a>
+        </br><a href="nil" id="package_name"">expression-scan
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defun_check-top" id="fun_name"">check-top
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_scan" id="fun_title"">scan
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(from &key (*package* (find-package cl-user)) (*expression-hook*
+                                               #'scan-expression-hook) load-first (judge
+                                                                                   (constantly
+                                                                                    t)) (depth
+                                                                                         0))
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Scans a file as source code in order to document it.
+'From' can be a string, pathname, stream, keyword(tries find system) or a list of
+ those. If it is a directory, it will read all the '.lisp' files in it.
+      </p>
+      <p id="item_body""><a id="item_name"">uses functions: 
+        </a>
+        <a href="nil" id="package_name"">alexandria.0.dev
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">when-let
+        </a>
+        </br><a href="nil" id="package_name"">asdf
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">find-system
+        </a>
+        , <a href="nil">oos
+        </a>
+        </br><a href="nil" id="package_name"">cl-fad
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">directory-pathname-p
+        </a>
+        , <a href="nil">list-directory
+        </a>
+        </br><a href="nil" id="package_name"">expression-scan
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defun_scan-file" id="fun_name"">scan-file
+        </a>
+        , <a href="defun_scan-stream" id="fun_name"">scan-stream
+        </a>
+        , <a href="nil">sf
+        </a>
+        </br><a href="nil" id="package_name"">j-general
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">file-extension
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_scan-expression-hook" id="fun_title"">scan-expression-hook
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(expr)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">The expression hook of the scanner.
+      </p>
+      <p id="item_body""><a id="item_name"">uses variables: 
+        </a>
+        <a href="nil" id="package_name"">expression-scan
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defparameter_*additional-scan*" id="var_name"">*additional-scan*
+        </a>
+        , <a href="defvar_*fun-scan*" id="var_name"">*fun-scan*
+        </a>
+        , <a href="defvar_*otherwise*" id="var_name"">*otherwise*
+        </a>
+        </br>
+      </p>
+      <p id="item_body""><a id="item_name"">uses functions: 
+        </a>
+        <a href="nil" id="package_name"">alexandria.0.dev
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">rcurry
+        </a>
+        </br><a href="nil" id="package_name"">expression-hook
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defun_expand-hook" id="fun_name"">expand-hook
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_list-packages-below-path" id="fun_title"">list-packages-below-path
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(path)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Lists all the packages that are in the path or in subdirectories thereof.
+      </p>
+      <p id="item_body""><a id="item_name"">uses functions: 
+        </a>
+        <a href="nil" id="package_name"">alexandria.0.dev
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">compose
+        </a>
+        , <a href="nil">curry
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_access-result" id="fun_title"">access-result
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(fun-name &optional name)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body""><a id="item_name"">uses variables: 
+        </a>
+        <a href="nil" id="package_name"">expression-scan
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defvar_*scan-result*" id="var_name"">*scan-result*
+        </a>
+        </br>
+      </p>
+      <p id="item_body""><a id="item_name"">uses functions: 
+        </a>
+        <a href="nil" id="package_name"">alexandria.0.dev
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="nil">when-let
+        </a>
+        </br><a href="nil" id="package_name"">expression-scan
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defun_access-result" id="fun_name"">access-result
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    <p><a id="item_name"">macro
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defmacro_def-scanner" id="fun_title"">def-scanner
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(for-name (&rest args) &body body)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Add-scanner-fun, but does the creation of function for you.
+Note that the variable expr contains the whole expression.
+      </p>
+      
+    </p>
+    <p><a id="item_name"">function
+      </a>
+      <a id="item_name""> 
+      </a>
+      <a name="defun_add-scanner-fun" id="fun_title"">add-scanner-fun
+      </a>
+      <p id="item_body""><p><a id="item_name"">arguments: 
+          </a>
+          <b>(for-name scan-function)
+          </b>
+          
+        </p>
+        
+      </p>
+      <p id="item_body"">Adds a scanner for a macro/function.
+      </p>
+      <p id="item_body""><a id="item_name"">uses variables: 
+        </a>
+        <a href="nil" id="package_name"">expression-scan
+        </a>
+        <a id="package_name"">: 
+        </a>
+        <a href="defvar_*fun-scan*" id="var_name"">*fun-scan*
+        </a>
+        , <a href="defvar_*scanned-forms*" id="var_name"">*scanned-forms*
+        </a>
+        </br>
+      </p>
+      
+    </p>
+    
+  </body>
+  
+</html>
