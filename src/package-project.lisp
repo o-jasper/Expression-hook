@@ -1,5 +1,5 @@
 ;;
-;;  Copyright (C) 05-01-2012 Jasper den Ouden.
+;;  Copyright (C) 06-01-2012 Jasper den Ouden.
 ;;
 ;;  This is free software: you can redistribute it and/or modify
 ;;  it under the terms of the GNU General Public License as published
@@ -21,22 +21,24 @@
 (defvar *package-info* (make-hash-table)
   "Extra info on packages
 :system-name for overriding system name. (Like :alexandria.0.dev -> :system-name)
-:project-dir default for project directory.(Specifcally given arguments override)
+:project-dir default for project directory.(Specifically given arguments override)
 TODO more")
 
 (defun package-info (package &optional what)
+  "Get info about package. if` :system-name` specified, the asd system name does not\
+ correspond to the package name."
   (if what (getf (gethash package *package-info*) what)
            (gethash package *package-info*)))
 (defun (setf package-info) (to package what)
-  "Note that `what` is not optional."
+  "Set info about package. Note that `what` is not optional here."
   (setf (getf (gethash package *package-info*) what) to))
 
-;Some pre-provided ones.(Use init scripts to add yours)
+;Some pre-provided ones.(Use init scripts to add yours/inform me)
 (setf (package-info :alexandria.0.dev :system-name) :alexandria)
 
-(defun update-header (project-dir prepend-file file)
+(defun update-header (prepend-file file)
   (let ((header (with-output-to-string (s)
-		  (with-open-file (stream (concat project-dir prepend-file))
+		  (with-open-file (stream prepend-file)
 		    (with-line-by-line stream (line) 
 		      (values (write-line line s)))))))
     (ensure-directories-exist "/tmp/cl-package-project/")
@@ -107,7 +109,7 @@ TODO handle absolute directories"
 			      ((find (nth (+ p 1) fn) subdirs :test #'string=)
 			       (concat "src/" (nth (+ p 1) fn))))))
       (let ((project-dir ;Figure out project directory.
-	     (reduce (lambda (have el) (concat have el "/")) (butlast fn 2)
+	     (reduce (lambda (have el) (concat have el "/")) (subseq fn 0 p)
 		     :initial-value "/"))
 	    (seen-packages (list)))
 	(scan filename :*expression-hook* ;Rescan the file.
@@ -119,23 +121,21 @@ TODO handle absolute directories"
 	(assert (null(cdr seen-packages)) nil 
 		"Only one package per file allowed at the moment.")
       ;Read some info.
-	(destructuring-bind (&key info-dir asd-license prepend-file copy-files
-				  extra &allow-other-keys)
-	    (with-open-file (stream (concat project-dir "package-info"))
+	(assert (probe-file (concat project-dir "doc/info/info")) nil
+		"Error need doc/info/info file for some instructions.")
+	(destructuring-bind (&whole whole &key asd-license &allow-other-keys)
+	    (with-open-file (stream (concat project-dir "doc/info/info"))
 	      (remove-if #'null (read-empty stream)))
-	  ;Copy some files.
-	  (dolist (f copy-files)
-	    (let ((to (concat project-dir f)))
-	      (ensure-directories-exist to)
-	      (copy-file (concat project-dir info-dir f) to)))
 	  (dolist (pkg seen-packages) ;Write systems for the packages.
-	    (when also ;Do more stuff.
-	      (funcall also pkg project-dir extra))
-	    (let ((result (access-result 'defpackage pkg)))
+	    (when also ;Do more stuff specified by user.
+	      (funcall also pkg project-dir whole))
+	    (let ((result (access-result 'defpackage pkg))) ;System based on scan.
 	      (write-system project-dir result :src-dir "src" :package pkg
 			    :license asd-license)))
-	  (when prepend-file ;Add the header if provided.
-	    (update-header project-dir 
-			   (concat info-dir prepend-file) filename))
+         ;Add the header if provided.
+	  (let ((prepend-file (concat project-dir "doc/info/header.txt")))
+	    (when (probe-file prepend-file)
+	      (update-header prepend-file filename)))
 	  (list :updated project-dir filename asd-license)))
       (list :didnt-update filename))))
+

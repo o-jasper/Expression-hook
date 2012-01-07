@@ -1,5 +1,5 @@
 ;;
-;;  Copyright (C) 05-01-2012 Jasper den Ouden.
+;;  Copyright (C) 06-01-2012 Jasper den Ouden.
 ;;
 ;;  This is free software: you can redistribute it and/or modify
 ;;  it under the terms of the GNU General Public License as published
@@ -9,9 +9,9 @@
 
 (defpackage :package-project-gil-autodoc
   (:use :common-lisp :expression-scan :gil-autodoc :j-string-utils
-	:gil-html)
+	:gil-html) ;TODO gil-html here good for the default, but otherwise..
   (:export also)
-  (:documentation "TODO Provides `also` which can be used as that argument to\
+  (:documentation "Provides `also` which can be used as that argument to\
  `package-project:auto-update` to make autodocumentation using gil-autodoc.
 
 Different formats depending on `from`, defaultly :html, you can also provide\

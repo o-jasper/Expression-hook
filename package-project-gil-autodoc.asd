@@ -1,7 +1,7 @@
 
 (defsystem :package-project-gil-autodoc
   :depends-on (:gil-html :j-string-utils :gil-autodoc :expression-scan)
-  :description "TODO Provides `also` which can be used as that argument to
+  :description "Provides `also` which can be used as that argument to
  `package-project:auto-update` to make autodocumentation using gil-autodoc.
 
 Different formats depending on `from`, defaultly :html, you can also provide
