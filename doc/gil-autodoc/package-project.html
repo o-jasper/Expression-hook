@@ -26,11 +26,7 @@
         </a>
         , <a href="nil">auto-update
         </a>
-        , <a href="nil">copy-files
-        </a>
         , <a href="nil">el
-        </a>
-        , <a href="nil">extra
         </a>
         , <a href="nil">f
         </a>
@@ -44,6 +40,8 @@
         </a>
         , <a href="nil">from-file
         </a>
+        , <a href="nil">full
+        </a>
         , <a href="nil">have
         </a>
         , <a href="nil">header
@@ -54,11 +52,11 @@
         </a>
         , <a href="nil">info
         </a>
-        , <a href="nil">info-dir
-        </a>
         , <a href="nil">license
         </a>
         , <a href="nil">line
+        </a>
+        , <a href="nil">load-it-p
         </a>
         , <a href="nil">module
         </a>
@@ -100,6 +98,8 @@
         </a>
         , <a href="nil">what
         </a>
+        , <a href="nil">when-info-file
+        </a>
         , <a href="nil">whole
         </a>
         , <a href="nil">write-system
@@ -122,17 +122,15 @@
       </a>
       <p id="item_body""><p><a id="item_name"">arguments: 
           </a>
-          <b>(filename &key (subdirs '(DOC TEST TRY EXAMPLE GUI)) also)
+          <b>(filename &key (subdirs '(DOC TEST TRY EXAMPLE GUI)) also (load-it-p t))
           </b>
           
         </p>
         
       </p>
-      <p id="item_body"">If application under `src/` directory, assume it is a project directory, and
- update it. `also` allows you to add stuff like autodocumentation. 
+      <p id="item_body"">If application under `src/` directory, assume it is a project directory,
+ and update it. `also` allows you to add stuff like autodocumentation. 
 package-project-documentation-template autodocs using documentation-template.
-
-TODO handle absolute directories
       </p>
       <p id="item_body""><a id="item_name"">uses functions: 
         </a>
@@ -148,11 +146,11 @@ TODO handle absolute directories
         </a>
         <a id="package_name"">: 
         </a>
-        <a href="defun_access-result" id="fun_name"">access-result
+        <a href="nil">access-result
         </a>
-        , <a href="defun_scan" id="fun_name"">scan
+        , <a href="nil">scan
         </a>
-        , <a href="defun_scan-expression-hook" id="fun_name"">scan-expression-hook
+        , <a href="nil">scan-expression-hook
         </a>
         </br><a href="nil" id="package_name"">j-string-utils
         </a>
@@ -190,8 +188,8 @@ TODO handle absolute directories
         </p>
         
       </p>
-      <p id="item_body"">Get info about package. if` :system-name` specified, the asd system name does not
- correspond to the package name.
+      <p id="item_body"">Get info about package. if` :system-name` specified, the asd system name
+ does not correspond to the package name.
       </p>
       <p id="item_body""><a id="item_name"">uses variables: 
         </a>

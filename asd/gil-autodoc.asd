@@ -10,5 +10,5 @@ TODO
 * formalization examples, todos, notes, references"
     :license "GPLv3"
   :serial t
-  :components ((:module "src"
+  :components ((:module "../src"
                  :components ((:file "gil-autodoc")))))

@@ -4,5 +4,5 @@
   :description "Packages a project in a simple way."
     :license "GPLv3"
   :serial t
-  :components ((:module "src"
+  :components ((:module "../src"
                  :components ((:file "package-project")))))

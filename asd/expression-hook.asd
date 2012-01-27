@@ -8,5 +8,5 @@ Use the scanner with the EXPAND function with some hook used.
 Used for gathering information on code autodoc via expression-scan."
     :license "GPLv3"
   :serial t
-  :components ((:module "src"
+  :components ((:module "../src"
                  :components ((:file "expression-hook")))))
