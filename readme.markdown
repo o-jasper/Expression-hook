@@ -101,7 +101,7 @@ Optionally information can be put in the `doc/info/` directory
 
 `info` there will contain a keyword-value-list that is passed to `extra` as 
 told about above. `:asd-license` indicates what to fill the
- `:license` entry of the asd-file with. (Probably a good idea to do that.)
+ `:license` entry of the asd-file with. (Probably a good idea to provide it.)
 
 `header`/`header.txt` contains a header that, if exists is **replaces** the
 headers of the source files. (For instance containing copyright info.) 
@@ -127,7 +127,7 @@ only have to press two buttons to apply it.
 You might also want to add `(require :package-project)` in `~/.sbclrc`, 
 otherwise it is simply not available.
 
-## Some `:also`s provided.
+### Some `:also`s provided.
 
 Basically the only one useable is the `package-project-documentation-template`
 package. It produces a ... template. You have to fill stuff in. Convenient, 
@@ -144,6 +144,13 @@ insert one. For instance:
       (package-project:auto-update \""
                       (buffer-file-name) "\" 
     :also (package-project-documentation-template:also)))\"")))
+
+There is also a `:expr-hook` keyword which allows you scan at the same time as
+the expression-scan scanner.
+
+###More documentation
+Autodocumentation is under `/doc/gil-autodoc/`, filled in most docstrings. The
+links currently don't work, and it could be a lot better.
 
 ## TODO
 

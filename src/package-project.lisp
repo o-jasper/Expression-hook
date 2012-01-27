@@ -98,12 +98,14 @@ TODO more")
   (do ((list nil (cons (read stream nil :eof) list)))
       ((unless (null list) (eql (car list) :eof)) (reverse (cdr list)))))
 
+;TODO give user access to hook.
 (defun auto-update
     (filename &key (subdirs '("doc" "test" "try" "example" "gui")) also
-     (load-it-p t))
+     (load-it-p t) (expr-hook (constantly nil)))
   "If application under `src/` directory, assume it is a project directory,\
  and update it. `also` allows you to add stuff like autodocumentation. 
-package-project-documentation-template autodocs using documentation-template."
+package-project-documentation-template autodocs using documentation-template.
+`expr-hook` allows you to have a say on the hook."
   (when load-it-p (load filename))
   (let*((fn (tokenize-str filename "" (rcurry #'char= #\/)))
 	(p  (position "src" fn :test #'string=)))
@@ -116,7 +118,8 @@ package-project-documentation-template autodocs using documentation-template."
 		     :initial-value "/"))
 	    (seen-packages (list)))
 	(scan filename :*expression-hook* ;Rescan the file.
-	      (lambda (expr) 
+	      (lambda (expr)
+		(funcall expr-hook expr)
 		(typecase expr ;record seen packages.
 		  ((cons (eql defpackage) list)
 		   (push (cadr expr) seen-packages)))
