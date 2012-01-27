@@ -53,7 +53,6 @@ The asd files describe this, of course.
 * [alexandria](http://common-lisp.net/project/alexandria/) used throughout. 
 * [cl-fad](http://weitz.de/cl-fad/). Probably should get rid of this 
   dependency, i think some functionality overlaps with alexandria.
-* [j-basic](https://github.com/o-jasper/j-basic).
 * As said, gil-autodoc depends on unreleased stuff(gil-def,gil-html) at the 
   moment. So everything based on those is a bit moot. Hopefully i will fix 
   that soon.
