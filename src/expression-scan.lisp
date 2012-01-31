@@ -1,5 +1,5 @@
 ;;
-;;  Copyright (C) 06-01-2012 Jasper den Ouden.
+;;  Copyright (C) 31-01-2012 Jasper den Ouden.
 ;;
 ;;  This is free software: you can redistribute it and/or modify
 ;;  it under the terms of the GNU General Public License as published
@@ -46,7 +46,8 @@
 (defun cur-path ()
   "Attempts to get current file being scanned."
   (or (when (and *cur-path* *cur-file*)
-	(concatenate 'string (namestring *cur-path*) (file-namestring *cur-file*)))
+	(concatenate 'string (namestring *cur-path*) 
+		     (file-namestring *cur-file*)))
       *cur-path* *cur-file*))
 
 ;;Some vars
@@ -125,8 +126,8 @@ Note that the variable expr contains the whole expression."
   (expand-hook expr)) ;Expand the expression.
 
 (defun scan-macrohook (expander form env)
-  "Function for in *macroexpand-hook*, doesn't make a nearly as complete scan, but\
- should work with regular loading."
+  "Function for in *macroexpand-hook*, doesn't make a nearly as complete\
+ scan, but should work with regular loading."
   (when-let (fn (gethash (car form) *fun-scan*))
     (funcall fn form))
   (funcall expander form env))
@@ -176,8 +177,9 @@ Note that the variable expr contains the whole expression."
 	     load-first (judge (constantly t))
 	     (depth 0)) ;TODO recursive.(Scan dependencies)
   "Scans a file as source code in order to document it.
-'From' can be a string, pathname, stream, keyword(tries find system) or a list of\
- those. If it is a directory, it will read all the '.lisp' files in it."
+'From' can be a string, pathname, stream, keyword(tries find system) or a\
+ list of those. If it is a directory, it will read all the '.lisp' files in\
+ it."
   (labels ((sf (from depth &key (load-first load-first))
 	     (typecase from
 	       ((or string pathname);Everything .lisp in directories.
@@ -195,15 +197,19 @@ Note that the variable expr contains the whole expression."
 			     (sf file (- depth 1))))
 			  ((case (aref (file-namestring file) 0)
 			     ((#\. #\#) nil)
-			     (t         (string= (file-extension file) ".lisp")))
+			     (t         (string= (file-extension file)
+						 ".lisp")))
 			   (sf file depth)))))
 		    (scan-file from :load-first load-first))))
 	       (stream ;;Make a `scan-stream`?
 		(scan-stream from))
 	       (keyword 
 		(when-let (sys (asdf:find-system from)) ;Take as system.
-		  (when load-first (asdf:oos 'asdf:load-op from))
-		  (sf (slot-value sys 'asdf:source-file) depth :load-first nil)))
+		  ;Otherwise it doesnt know what it is.
+		  (let ((*package* (find-package :asdf))) 
+		    (when load-first (asdf:oos 'asdf:load-op from))
+		    (sf (slot-value sys 'asdf:source-file) depth
+			:load-first nil))))
 	       (list
 		(dolist (f from) (sf f depth))))))
     (sf from depth))
@@ -334,11 +340,13 @@ Discontinued scan." name)
 	(tracker
 	 (make-instance 'track-package :form `(defpackage ,name ,@rest)
 	   :uses (mapcar (lambda (name) 
-			   (intern (package-name (find-package name)) :keyword))
+			   (intern (package-name (find-package name)) 
+				   :keyword))
 			 (cdr(assoc :use rest))))))
     (setf (access-result 'defpackage name) tracker)
     (setq *package-list* ;TODO a special var indicating if it is allowed.
-	  (remove-if (lambda (p) (eql name (track-item p :name))) *package-list*))
+	  (remove-if (lambda (p) (eql name (track-item p :name)))
+		     *package-list*))
     (push tracker *package-list*))
   expr)
 
@@ -519,10 +527,11 @@ true: Follow, assumes the macros in the files have been executed!
 (defun scan-asdf-components (components)
   (dolist (component components)
     (destructuring-bind (name value &rest rest) component
-      (let ((value (typecase value (symbol (string-downcase value)) (t value))))
+      (let ((value (typecase value (symbol (string-downcase value)) 
+			           (t      value))))
 	(case name
 	  (:file
-	   (scan (concatenate 'string *cur-path* value ".lisp")))
+	   (scan (concatenate 'string *cur-path* "/" value ".lisp")))
 	  (:module
 	   (let ((*cur-path* (concatenate 'string *cur-path* value)))
 	     (scan-asdf-components (getf rest :components)))))))))

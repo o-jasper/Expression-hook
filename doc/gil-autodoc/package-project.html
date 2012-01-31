@@ -28,6 +28,8 @@
         </a>
         , <a href="nil">el
         </a>
+        , <a href="nil">expr-hook
+        </a>
         , <a href="nil">f
         </a>
         , <a href="nil">file
@@ -122,7 +124,9 @@
       </a>
       <p id="item_body""><p><a id="item_name"">arguments: 
           </a>
-          <b>(filename &key (subdirs '(DOC TEST TRY EXAMPLE GUI)) also (load-it-p t))
+          <b>(filename &key (subdirs '(DOC TEST TRY EXAMPLE GUI)) also (load-it-p t) (expr-hook
+                                                                         (constantly
+                                                                          nil)))
           </b>
           
         </p>
@@ -131,6 +135,7 @@
       <p id="item_body"">If application under `src/` directory, assume it is a project directory,
  and update it. `also` allows you to add stuff like autodocumentation. 
 package-project-documentation-template autodocs using documentation-template.
+`expr-hook` allows you to have a say on the hook.
       </p>
       <p id="item_body""><a id="item_name"">uses functions: 
         </a>

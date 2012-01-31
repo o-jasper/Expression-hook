@@ -161,6 +161,10 @@ links currently don't work, and it could be a lot better.
   ..At some point i scanned many of the stuff on my computer.. Need to do that
   again..
 
+* expression-scan is now handling going through asd files, expression-hook or
+  maybe a third package should do it so people creating other data-gatherers
+  don't have to reimplement it.
+
 * More autodocumentation `:also`s. Release something of the 'gil-project' to 
   enable people to use the autodocumentation. Perhaps make a markdown or some
   other that github can show immediately.
