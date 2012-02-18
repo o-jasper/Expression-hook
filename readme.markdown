@@ -2,7 +2,8 @@
 
 Expression hook is about getting more grip on your code. Features:
 
-**Expression-hook** is a hook on *every* expression, knowing in what function.
+**Expression-hook** is a hook on *every* expression, knowing in what 
+function.
 
 **Expression scan** gathers statistics, information for autodocumentation.
 
@@ -15,9 +16,9 @@ packaging. (Which can be later filled with autodocumentation and such.)
 * Expression hook, a function called on every expression.
   * Needs the scanned code to be availabe for running since it needs the 
     macros.
-  * It might trip on stuff meant to be read with `readtable`, probably not bug
-    free.
-  * TODO is to try/test the 'adapters' to be able to use `*macroexpand-hook*` 
+  * It might trip on stuff meant to be read with `readtable`, probably not 
+    bug free.
+  * TODO is to try/test the 'adapters' to be able to use `*macroexpand-hook*`
     also.
 
 * Expression scan, which uses to hook to collect a bunch of data.
@@ -92,23 +93,31 @@ And it should be easy to create your own 'alsos' it expects a function taking
 three arguments: `package` the keyword-ized package name, which can for 
 instance be used to access expression-scan results.
 `project-dir` tells you where it is and
-`extra` the extra stuff contained in `/doc/info/info/`, if that file exists.
+`extra` the extra stuff contained in `/doc/info/info`, if that file exists.
 Something like `(lambda (package project-dir extra) ...)` then. Of course,
 provided alsos can be looked at as examples.
 
 ### Optional stuff
 Optionally information can be put in the `doc/info/` directory
 
-`info` there will contain a keyword-value-list that is passed to `extra` as 
-told about above. `:asd-license` indicates what to fill the
- `:license` entry of the asd-file with. (Probably a good idea to provide it.)
+####`info`
+ there will contain a keyword-value-list that is passed to `extra` as 
+told about above. 
 
-`header`/`header.txt` contains a header that, if exists is **replaces** the
+* `:asd-license`/`:license` indicates what to fill the `:license` entry of
+   the asd-file with. (Probably a good idea to provide it.)
+* `:author`/`:authors` can indicate the author(s).
+* `:maintainer`/`:maintainers` can indicate the author(s). 
+
+Note that the documentation string is taken from the package. It will whine
+about it on the .asd file if it is missing. Don't make it too long either, 
+just use separate files for extensive documentation.
+
+####`header`/`header.txt` 
+contains a header that, if exists is **replaces** the
 headers of the source files. (For instance containing copyright info.) 
-Specifically, it looks for continuous 'double comments';';;' at the top of
- the file. (Don't put extremely long comments in files, please, it is
- annoying.. Just in something and make a .pdf, .html or whatever and let us
-read that.)
+Specifically, it looks for continuous 'double comments' **`;;`** at the top
+ of the file.
 
 ### Doing it quickly with emacs
 
