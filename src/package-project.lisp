@@ -9,7 +9,7 @@
 
 (defpackage :package-project
   (:use :common-lisp :alexandria :expression-scan :j-string-utils)
-  (:export auto-update package-info *src-dir*)
+  (:export auto-update package-info package-info-join)
   (:documentation "Packages a project in a simple way."))
 
 (in-package :package-project)
@@ -22,12 +22,9 @@
   "Extra info on packages
 :system-name    for overriding system name. (Like :alexandria.0.dev ->\
  :system-name)
-:project-dir    default for project directory.(Specifically given arguments\
- override) (TODO?)
 :also-depends   lists extra dependencies not seen by scanner.
 :license        This package has a different license than the rest
-                (asd-license header-file-relative-from doc/info)
-TODO more")
+                (asd-license header-file-relative-from doc/info)")
 
 (defun package-info (package &optional what)
   "Get info about package. if` :system-name` specified, the asd system name\
@@ -137,6 +134,32 @@ doubly! I disallow this.")
   (do ((list nil (cons (read stream nil :eof) list)))
       ((unless (null list) (eql (car list) :eof)) (reverse (cdr list)))))
 
+(defun read-key-file (file)
+  (if (probe-file file)
+    (handler-case (with-open-file (stream file)
+		    (remove-if #'null (read-empty stream)))
+      (parse-error (a) 
+	(error "Consider syntax errors, in doc/info/info
+~s" a))
+      (error (a)
+	(error "Error during reading doc/info/info, check it?\ Not a syntax/stream error though;~%~s" a))
+      (stream-error (a)
+	(error "Some stream error, non-matching parenthesis in doc/info/info?
+ ~s" a))
+      (file-error (a)
+	(error "File error, doc/info/info doesnt exist? Another error should\
+ have caught this.~%~s" a))
+      (t (a)
+	(error "Something happened parsing doc/info/info~%~s" a)))
+    (error "doc/info/info file doesnt exist.")))
+
+(defun incorporate-key-plist (package key-plist)
+  (destructuring-bind (&whole keys &key package-info 
+			      &allow-other-keys) key-plist
+    (package-info-join package keys) ;Add package-info
+    (dolist (el package-info) ;Will overwrite previous.
+      (package-info-join (car el) (cdr el)))))
+
 ;TODO give user access to hook.
 (defun auto-update
     (filename &key (subdirs '("doc" "test" "try" "example" "gui")) also
@@ -168,16 +191,8 @@ package-project-documentation-template autodocs using documentation-template.
 		"Only one package per file allowed at the moment.")
       ;Read some info.
 	(let ((package (car seen-packages)))
-	  (destructuring-bind (&whole keys &key
-				      package-info &allow-other-keys)
-	      (if (probe-file (concat project-dir "doc/info/info"))
-		(with-open-file (stream (concat project-dir "doc/info/info"))
-		  (remove-if #'null (read-empty stream)))
-		(error "doc/info/ folder does not exist."))
-	  ;Add package-info
-	    (package-info-join package keys) 
-	    (dolist (of-package package-info) ;Will overwrite previous.
-	      (package-info-join (car of-package) (cdr of-package))))
+	  (incorporate-key-plist 
+	   package (read-key-file (concat project-dir "doc/info/info")))
        ;Write systems for the package.
 	  (when also ;Do more stuff specified by user.
 	    (funcall also package project-dir (package-info package)))

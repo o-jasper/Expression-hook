@@ -109,7 +109,7 @@ told about above.
    if a list, the first element indicates the name, the second the header as
    relative to `doc/info/` (see next section) _All_ license info goes in here.
 * `:author`/`:authors` can indicate the author(s).
-* `:maintainer`/`:maintainers` can indicate the author(s). 
+* `:maintainer`/`:maintainers` can indicate the maintainer(s). 
 * `:package-info` is followed by a alist with different packages, specifying.
   + Overriding any of the ones above for the specific package.
   + `:system-name` for overriding the name (for instance `:alexandria.0.dev` 
