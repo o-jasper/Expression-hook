@@ -67,12 +67,12 @@ Make the directories `your-projects/the-project/src/`, the main .lisp files in
 `src/` otherwise things are categorized.(Last collumn is what the package name
 should precede with)
 
-    tests                                               src/test/        test-
-    examples                                            src/example/     example-
-    'messing about' (since a mess, might not have .asd) src/try/         try-
-    machine readable documentation/autodoc assistance   src/doc/         doc-
-    guis for stuff                                      src/gui/         gui-
-    data 'for code'                                     src/data/        data-
+    tests                                               src/test/           test-
+    examples                                            src/example/        example-
+    'messing about'(since a mess, might not have .asd)  src/try/, src/mess  try-, mess-
+    machine readable documentation/autodoc assistance   src/doc/            doc-
+    guis for stuff(unless gui is the central purpose)   src/gui/            gui-
+    data 'for code'                                     src/data/           data-
 
 You can extend the idea, but be careful so that it makes sense, preferably 
 ask me to add it to this list so we dont get different-but-similar terms.
@@ -100,24 +100,33 @@ provided alsos can be looked at as examples.
 ### Optional stuff
 Optionally information can be put in the `doc/info/` directory
 
-####`info`
+#### `info`
  there will contain a keyword-value-list that is passed to `extra` as 
 told about above. 
 
 * `:asd-license`/`:license` indicates what to fill the `:license` entry of
    the asd-file with. (Probably a good idea to provide it.)
+   if a list, the first element indicates the name, the second the header as
+   relative to `doc/info/` (see next section) _All_ license info goes in here.
 * `:author`/`:authors` can indicate the author(s).
 * `:maintainer`/`:maintainers` can indicate the author(s). 
+* `:package-info` is followed by a alist with different packages, specifying.
+  + Overriding any of the ones above for the specific package.
+  + `:system-name` for overriding the name (for instance `:alexandria.0.dev` 
+	to just `:alexandria`)
+  + `:also-depends` for adding more dependencies the scanner doesnt catch.
+    (It will catch it if packages refer to each other namespace)
 
 Note that the documentation string is taken from the package. It will whine
 about it on the .asd file if it is missing. Don't make it too long either, 
 just use separate files for extensive documentation.
 
-####`header`/`header.txt` 
+#### `header`/`header.txt` 
 contains a header that, if exists is **replaces** the
 headers of the source files. (For instance containing copyright info.) 
 Specifically, it looks for continuous 'double comments' **`;;`** at the top
- of the file.
+ of the file. As noted above, providing `:license` with a list can override 
+ it.
 
 ### Doing it quickly with emacs
 
@@ -163,7 +172,7 @@ links currently don't work, and it could be a lot better.
 
 ## TODO
 
-* Fix linux/SBCL specific stuff.
+* Make any linux/SBCL specific stuff less specific for it.
 
 * Try improve success probability on package-name vs system-name mismatches..
   For instance by finding and listing more mismatches.
@@ -181,9 +190,11 @@ links currently don't work, and it could be a lot better.
 * Some guard against changing the header? Maybe just recommend `.gitignore` 
   and such.
 
-* There is always the better lisp...(that doesnt exist yet)
+* Add an extension that looks for git/svn etc. systems, and finds the 
+  identifier of the current version, and stuffs it(optionally) in the
+  documentation, .asd files(as comments/the `:version` keyword)
 
-###Unrelated
+### Unrelated
 
 The asd-versions of these can be used in for instance ~/.sbclrc to make asdf
  aware of the .asd files:
@@ -211,9 +222,9 @@ The asd-versions of these can be used in for instance ~/.sbclrc to make asdf
                  (mapcar #'add-asd
                          (fad:list-directory (concatenate 'string prep path)))))
 
-##Copyright
+## Copyright
 Everything is under GPLv3, license included under `doc/`
 
-##Author
+## Author
 
 Jasper den Ouden
