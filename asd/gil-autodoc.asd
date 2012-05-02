@@ -8,7 +8,7 @@ TODO
 * use indentation for better readability.
 * use `section`
 * formalization examples, todos, notes, references"
-    :license "GPLv3"
   :serial t
+  :author "Jasper den Ouden"
   :components ((:module "../src"
                  :components ((:file "gil-autodoc")))))

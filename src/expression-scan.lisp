@@ -18,7 +18,7 @@
    scan-expression-hook scan-macro-hook
  ;Defining scanners.
    add-scanner-fun add-scanner *otherwise*
-   def-scanner expr *additional-scan* *forms-for*
+   def-scanner expr *additional-scan* 
  ;Accessing information.
    access-result *package-list* list-packages-below-path 
    *scan-result*
@@ -92,10 +92,10 @@ Note that the variable expr contains the whole expression."
 ;;Accessing result.
 (defun access-result (fun-name &optional name)
   (typecase fun-name
-    (null)
+    (null nil)
     (list (dolist (f-name fun-name)
 	    (when-let ((result (access-result f-name name)))
-	      (return result))))
+	      (return-from access-result result))))
     (t    (when-let (hash (gethash fun-name *scan-result*))
 	    (if name (gethash name hash) hash)))))
 
@@ -335,6 +335,9 @@ Discontinued scan." name)
 (slot-value-track-item track-package also-uses)
 (slot-value-track-item track-package scan-list)
 
+(defmethod track-item ((track track-package) (item (eql :doc-str)))
+  (documentation (track-item track :name) 'package))
+
 (def-scanner defpackage (name &rest rest)
   (let*((name (package-keyword name))
 	(tracker
@@ -368,6 +371,9 @@ Discontinued scan." name)
 (slot-value-track-item track-fun args)
 (slot-value-track-item track-fun in-funs)
 
+(defmethod track-item ((track track-fun) (item (eql :doc-str)))
+  (documentation (slot-value track 'name) 'function))
+  
 (defun fun-like-scanner (kind name args)
   (let*((fun (make-instance 'track-fun :name name :args args
 	       :kind kind :in-funs *in-funs* :overrider *overrider*)))
@@ -477,6 +483,9 @@ fun-dep and var-dep for initform!"))
 (slot-value-track-item track-var fun-dep)
 (slot-value-track-item track-var var-dep)
 
+(defmethod track-item ((track track-var) (item (eql :doc-str)))
+  (documentation (track-item track :name) 'variable))
+
 (flet ((var-scanner (expr)
 	 "Function to scan variable creation by defvar/defparameter."
 	 (destructuring-bind (type name &rest rest) expr
@@ -489,8 +498,8 @@ fun-dep and var-dep for initform!"))
 
 (defclass track-class (track-form) ())
 
-(defmethod track-item ((track track-class) (item (eql :doc)))
-  (getf (nth 4 (slot-value track 'form)) :doc))
+(defmethod track-item ((track track-class) (item (eql :doc-str)))
+  (getf (nth 4 (slot-value track 'form)) :doc-str))
 (defmethod track-item ((track track-class) (item (eql :derives-from)))
   (nth 2 (slot-value track 'form)))
 (defmethod track-item ((track track-class) (item (eql :slots)))

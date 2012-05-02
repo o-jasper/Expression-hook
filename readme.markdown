@@ -67,12 +67,24 @@ Make the directories `your-projects/the-project/src/`, the main .lisp files in
 `src/` otherwise things are categorized.(Last collumn is what the package name
 should precede with)
 
-    tests                                               src/test/           test-
-    examples                                            src/example/        example-
-    'messing about'(since a mess, might not have .asd)  src/try/, src/mess  try-, mess-
-    machine readable documentation/autodoc assistance   src/doc/            doc-
-    guis for stuff(unless gui is the central purpose)   src/gui/            gui-
-    data 'for code'                                     src/data/           data-
+<table>
+<tr><td>tests</td> 
+	<td> src/test/</td> <td><code>test-</code></td></tr>
+<tr><td>examples</td>
+	<td>src/example/</td><td><code>example-</code></td></tr>
+<tr><td>'messing about'(since a mess, might not have .asd)</td>
+	<td>src/try/, src/mess</td> <td><code>try-</code>, 
+		                             <code>mess-</code></td></tr>
+<tr><td>machine readable documentation/autodoc assistance</td>
+	<td>src/doc/</td> <td><code>doc-</code></td></tr>
+<tr><td>guis for stuff(unless gui is the central purpose)</td> 
+	<td>src/gui/</td> <td><code>gui-</code></td></tr>
+<tr><td>plumbing, code specific for project, not ready to be library, but<br/>
+no library conveniently available to replace it either.</td> 
+	<td>src/plumbing/</td><td><code>plumbing-</code></td></tr>
+<tr><td>data 'for code'</td>
+	<td>src/data/</td> <td><code>data-</code></td></tr>
+</table>
 
 You can extend the idea, but be careful so that it makes sense, preferably 
 ask me to add it to this list so we dont get different-but-similar terms.

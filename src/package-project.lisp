@@ -16,7 +16,7 @@
 
 (defun implementation-package-p (pkg)
   "Returns true if package belongs to implementation."
-  (eql pkg :common-lisp))
+  (find pkg '(:common-lisp :sb-thread)))
 
 (defvar *package-info* (make-hash-table) 
   "Extra info on packages
@@ -95,13 +95,19 @@ doubly! I disallow this.")
 			    :if-exists :supersede)
       (format stream "~%(defsystem :~a" pkg-name)
     ;Dependencies.
-      (when-let (list (mapcar
-		       (compose #'string-downcase #'symbol-name sys-name) 
-		       (union
-			(remove package 
-				(remove-if #'implementation-package-p 
-					   (append uses also-uses)))
-			(package-info package :also-depends))))
+      (when-let 
+	  (list (mapcar
+		 (compose #'string-downcase #'symbol-name sys-name) 
+		 (union ;TODO removing them explictly like :also-depends
+		  (remove-if
+		   (lambda (p)
+		     "Remove self-references, implementing packages and\
+ explicitly removed stuff."
+		     (or (eql p package)
+			 (implementation-package-p p)
+			 (find p (package-info package :remove-depends))))
+		   (append uses also-uses))
+		  (package-info package :also-depends))))
 	(format stream "~%  :depends-on (~{:~a~^ ~})" list))
     ;Documentation string. 
       (format stream "~%  :description \"~a\"~%  :serial t"
@@ -162,8 +168,8 @@ doubly! I disallow this.")
 
 ;TODO give user access to hook.
 (defun auto-update
-    (filename &key (subdirs '("doc" "test" "try" "example" "gui")) also
-     (load-it-p t) (expr-hook (constantly nil)))
+    (filename &key (subdirs '("doc" "test" "try" "example" "gui" "plumbing")) 
+     also (load-it-p t) (expr-hook (constantly nil)))
   "If application under `src/` directory, assume it is a project directory,\
  and update it. `also` allows you to add stuff like autodocumentation. 
 package-project-documentation-template autodocs using documentation-template.
